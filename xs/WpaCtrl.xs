@@ -89,17 +89,21 @@ SV*
 wpa_ctrl_recv(ctrl)
 		struct wpa_ctrl *ctrl
 	PREINIT:
-		char *reply = NULL;
-		STRLEN *reply_len = NULL;
+		char reply[2048];
+		size_t reply_len = sizeof(reply) - 1;
 		int return_value = 0;
 	CODE:
-		return_value = wpa_ctrl_recv(ctrl, reply, reply_len);
+		return_value = wpa_ctrl_recv(ctrl, reply, &reply_len);
 
 		if (return_value == -1) {
 			RETVAL = &PL_sv_undef;
 		} else {
-			RETVAL = newSVpvn(reply, *reply_len);
+			RETVAL = newSVpvn(reply, reply_len);
 		}
+
+		printf("%s\n", SvPV_nolen(RETVAL));
+	OUTPUT:
+		RETVAL
 
 int
 wpa_ctrl_pending(ctrl)

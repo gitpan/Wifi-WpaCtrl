@@ -13,7 +13,7 @@ WriteMakefile(
 		PM				=> {
 			'pm/WpaCtrl.pm'	=> '$(INST_LIBDIR)/WpaCtrl.pm',
 		},
-		INC				=> '-Wall -Werror -Iwpa_ctrl -Iperl_glue',
+		INC				=> '-Wall -Iwpa_ctrl -Iperl_glue',
 		do {
 			my @clean;
 			my @OBJECT;

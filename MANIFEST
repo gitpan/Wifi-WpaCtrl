@@ -7,5 +7,8 @@ Makefile.PL
 perl_glue/perl_wpa_ctrl.c
 perl_glue/perl_wpa_ctrl.h
 t/05_use.t
+t/00_pod.t
+t/01_pod_coverage.t
 MANIFEST
+Changes
 META.yml                                 Module meta-data (added by MakeMaker)
